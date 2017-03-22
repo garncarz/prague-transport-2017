@@ -41,7 +41,7 @@ def test_task1():
     }
 
     response = app.test_client().post('/task1/input', data=json.dumps(_input))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert data['feasible'] == True
     assert data['totalCost'] == 15
