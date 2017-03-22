@@ -1,20 +1,10 @@
-from flask import Flask, abort, jsonify, request
+from flask import Flask
+
+from task1.api import task1_api
+from task2.api import task2_api
+
 
 app = Flask(__name__)
 
-
-@app.route('/task1/input', methods=['POST'])
-def task1():
-    _input = request.get_json(force=True)
-
-    if not _input:
-        abort(400)
-
-    # TODO processing
-
-    return jsonify(dict(
-        feasible=True,
-        totalCost=15,
-        depotId=3,
-        recommendedOffers=[],
-    ))
+app.register_blueprint(task1_api, url_prefix='/task1')
+app.register_blueprint(task2_api, url_prefix='/task2')
