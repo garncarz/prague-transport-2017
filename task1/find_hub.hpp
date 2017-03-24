@@ -15,6 +15,8 @@
 #include <boost/random.hpp>
 #include "edmonds_optimum_branching.hpp"
 
+//#define DEBUG
+
 using namespace std;
 using namespace boost;
 
@@ -22,12 +24,6 @@ struct Line {
     unsigned int from, to, price;
 
     Line(unsigned int from, unsigned int to, unsigned int price) : from(from), to(to), price(price) {};
-};
-
-struct City {
-    unsigned int num;
-    std::vector<Line> in;
-    std::vector<Line> out;
 };
 
 struct Result {
@@ -39,7 +35,7 @@ struct Result {
 
 class GraphProcessor {
 public:
-    void load_input();
+    bool load_input();
     void find_hub();
     void send_result();
 
