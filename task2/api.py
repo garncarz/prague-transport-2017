@@ -1,4 +1,5 @@
 from flask import Blueprint, abort, jsonify, request
+from .task import solve_task
 
 
 task2_api = Blueprint('task2', __name__)
@@ -11,8 +12,11 @@ def task1():
     if not _input:
         abort(400)
 
-    # TODO processing
+    try:
+        result = solve_task(_input)
+    except:
+        abort(400, {})
 
     return jsonify(dict(
-        result=[],
+        result=result,
     ))

@@ -1,3 +1,4 @@
 flask
 ipython
 pytest
+scikit-learn
