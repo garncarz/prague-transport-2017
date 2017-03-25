@@ -4,4 +4,4 @@ pytest
 scikit-learn
 scipy
 raven[flask]
-
+uwsgi
