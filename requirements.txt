@@ -5,7 +5,9 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 appdirs==1.4.3            # via setuptools
+blinker==1.4              # via raven
 click==6.7                # via flask
+contextlib2==0.5.4        # via raven
 decorator==4.0.11         # via ipython, traitlets
 flask==0.12
 ipython-genutils==0.2.0   # via traitlets
@@ -22,6 +24,7 @@ py==1.4.33                # via pytest
 pygments==2.2.0           # via ipython
 pyparsing==2.2.0          # via packaging
 pytest==3.0.7
+raven[flask]==6.0.0
 simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via packaging, prompt-toolkit, setuptools, traitlets
 traitlets==4.3.2          # via ipython

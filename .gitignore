@@ -184,3 +184,9 @@ dkms.conf
 *.exe
 *.out
 *.app
+
+
+########################################
+# custom:
+
+settings_local.py

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-FLASK_APP=app.py flask run $@
+PYTHONPATH=. FLASK_APP=main.app flask run $@
