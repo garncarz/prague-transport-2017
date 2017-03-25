@@ -15,6 +15,7 @@ ipython==5.3.0
 itsdangerous==0.24        # via flask
 jinja2==2.9.5             # via flask
 markupsafe==1.0           # via jinja2
+numpy==1.12.1             # via scipy
 packaging==16.8           # via setuptools
 pexpect==4.2.1            # via ipython
 pickleshare==0.7.4        # via ipython
@@ -24,6 +25,8 @@ py==1.4.33                # via pytest
 pygments==2.2.0           # via ipython
 pyparsing==2.2.0          # via packaging
 pytest==3.0.7
+scikit-learn==0.18.1
+scipy==0.19.0
 raven[flask]==6.0.0
 simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via packaging, prompt-toolkit, setuptools, traitlets

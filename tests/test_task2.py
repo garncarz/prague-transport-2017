@@ -50,5 +50,7 @@ def test_task2():
     response = app.test_client().post('/task2/input', data=json.dumps(_input))
     data = json.loads(response.data.decode())
 
+    assert response.status_code == 200
     assert 'result' in data
+    assert len(data['result']) == 2
     # TODO more asserts
