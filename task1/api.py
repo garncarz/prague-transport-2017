@@ -1,5 +1,9 @@
+import logging
+
 from flask import Blueprint, abort, jsonify, request
 
+
+logger = logging.getLogger(__name__)
 
 task1_api = Blueprint('task1', __name__)
 
@@ -11,11 +15,17 @@ def task1():
     if not _input:
         abort(400)
 
+    logger.info('Task1: input', extra={'data': _input})
+
     # TODO processing
 
-    return jsonify(dict(
+    _output = dict(
         feasible=True,
         totalCost=15,
         depotId=3,
         recommendedOffers=[],
-    ))
+    )
+
+    logger.info('Task1: output', extra={'data': _output})
+
+    return jsonify(_output)

@@ -3,3 +3,5 @@ ipython
 pytest
 scikit-learn
 scipy
+raven[flask]
+

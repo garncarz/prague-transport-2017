@@ -1,6 +1,6 @@
 import json
 
-from app import app
+from main.app import app
 
 
 def test_task2():
