@@ -1,0 +1,2 @@
+http://trans.garncarz.cz/task1/input
+http://trans.garncarz.cz/task2/input
