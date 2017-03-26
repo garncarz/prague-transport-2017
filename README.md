@@ -39,3 +39,14 @@ algorithm is quadratic due to number of vertices.
 ### Requirements and installation
 
 `gcc >= 4.8.1`, `boost >= 1.34` and `make`. A standard Makefile is provided.
+
+
+## Task 2
+
+There is basic decission tree from scikit-learn used to categorize airplanes based
+on measured noise level, brake distance and vibration.
+
+### Requirements
+
+* `scikit-learn`
+* `scipy`
