@@ -1,6 +1,7 @@
 import logging
 
 from flask import Blueprint, abort, jsonify, request
+from . import task
 
 
 logger = logging.getLogger(__name__)
@@ -17,15 +18,14 @@ def task1():
 
     logger.info('Task1: input', extra={'data': {'input': _input}})
 
-    # TODO processing
+    try:
+        job = task.solve.apply_async(args=[_input])
+        result = job.get()
+    except Exception:
+        logger.exception('Task1: error solving')
+        abort(400)
 
-    _output = dict(
-        feasible=True,
-        totalCost=15,
-        depotId=3,
-        recommendedOffers=[],
-    )
-
+    _output = result
     logger.info('Task1: output', extra={'data': {'output': _output}})
 
     return jsonify(_output)
