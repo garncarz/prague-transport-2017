@@ -1,7 +1,7 @@
 import re
 import subprocess
 
-from main import celery
+from main import cache, celery
 
 
 def dict_to_stdin(d):
@@ -42,4 +42,9 @@ def _solve(_input):
 
 @celery.app.task
 def solve(_input):
-    return _solve(_input)
+    key = {'task': 1, 'input': _input}
+    result = cache.get(key)
+    if not result:
+        result = _solve(key)
+        cache.set(key, result)
+    return result
