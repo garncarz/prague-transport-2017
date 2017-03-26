@@ -15,7 +15,7 @@ def task1():
     if not _input:
         abort(400)
 
-    logger.info('Task1: input', extra={'data': _input})
+    logger.info('Task1: input', extra={'data': {'input': _input}})
 
     # TODO processing
 
@@ -26,6 +26,6 @@ def task1():
         recommendedOffers=[],
     )
 
-    logger.info('Task1: output', extra={'data': _output})
+    logger.info('Task1: output', extra={'data': {'output': _output}})
 
     return jsonify(_output)

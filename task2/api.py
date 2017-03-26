@@ -16,7 +16,7 @@ def task2():
     if not _input:
         abort(400)
 
-    logger.info('Task2: input', extra={'data': _input})
+    logger.info('Task2: input', extra={'data': {'input': _input}})
 
     try:
         job = task.solve.apply_async(args=[_input])
@@ -29,6 +29,6 @@ def task2():
         result=result,
     )
 
-    logger.info('Task2: output', extra={'data': _output})
+    logger.info('Task2: output', extra={'data': {'output': _output}})
 
     return jsonify(_output)
