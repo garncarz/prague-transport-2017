@@ -2,8 +2,11 @@ language: python
 python:
     - 3.5
     - 3.6
+before_install:
+    - sudo apt-get install -y libboost-dev
 install:
     - pip install -r requirements.txt
+    - cd task1 && make
 script:
     ./test.sh
 addons:
