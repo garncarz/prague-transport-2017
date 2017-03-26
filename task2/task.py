@@ -1,5 +1,7 @@
 from sklearn import tree
 
+from main import celery
+
 
 def prepare_classifier(clf, data):
     target = []
@@ -19,7 +21,7 @@ def predict(clf, data):
     return result
 
 
-def solve_task(data):
+def _solve(data):
     try:
         learning_set = data['measurements']
         testing_set = data['samples']
@@ -29,3 +31,8 @@ def solve_task(data):
     prepare_classifier(clf, learning_set)
     response = predict(clf, testing_set)
     return response
+
+
+@celery.app.task
+def solve(_input):
+    return _solve(_input)
