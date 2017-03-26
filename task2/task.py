@@ -1,8 +1,7 @@
 from sklearn import tree
 
-clf = tree.DecisionTreeClassifier()
 
-def prepare_classifier(data):
+def prepare_classifier(clf, data):
     target = []
     _input = []
     for a in data:
@@ -11,10 +10,10 @@ def prepare_classifier(data):
     clf.fit(_input, target)
 
 
-def predict(data):
+def predict(clf, data):
     result = []
     for a in data:
-        _input = ((a['noise-level'], a['brake-distance'], a['vibrations']))
+        _input = [(a['noise-level'], a['brake-distance'], a['vibrations'])]
         cls = clf.predict(_input)[0]
         result.append({'id': a['id'], 'type': cls})
     return result
@@ -26,6 +25,7 @@ def solve_task(data):
         testing_set = data['samples']
     except IndexError:
         return None # or raise some custom excpetion?
-    prepare_classifier(learning_set)
-    response = predict(testing_set)
+    clf = tree.DecisionTreeClassifier()
+    prepare_classifier(clf, learning_set)
+    response = predict(clf, testing_set)
     return response
