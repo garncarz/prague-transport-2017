@@ -10,6 +10,6 @@ before_install:
 install:
     - pip install -r requirements.txt
     - export CXX="g++-6"
-    - cd task1 && make
+    - cd task1 && make && cd -
 script:
     ./test.sh
