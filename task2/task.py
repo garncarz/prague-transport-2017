@@ -1,6 +1,6 @@
 from sklearn import tree
 
-from main import celery
+from main import cache, celery
 
 
 def prepare_classifier(clf, data):
@@ -35,4 +35,9 @@ def _solve(data):
 
 @celery.app.task
 def solve(_input):
-    return _solve(_input)
+    key = {'task': 2, 'input': _input}
+    result = cache.get(key)
+    if not result:
+        result = _solve(key)
+        cache.set(key, result)
+    return result
