@@ -6,28 +6,54 @@ void GraphProcessor::find_hub()
 
     complete_graph      g(cities_cnt);
     multi_array<int, 2> weights(extents[cities_cnt][cities_cnt]);
-    Vertex              roots[] = {0, 1, 2, 3};
+    Vertex              roots[cities_cnt];
     vector<Edge>        branching;
+
+    int n = {0};
+    std::generate(roots, roots + cities_cnt, [&n] { return n++; } );
+
+    int *end = weights.origin() + cities_cnt * cities_cnt;
+    for (int *it = weights.origin(); it != end; ++it)
+        *it = INT_MAX;
 
     for (auto it = lines.begin(); it != lines.end(); ++it) {
         weights[it->from][it->to] = it->price;
     }
 
-    edmonds_optimum_branching<false, true, true>
+    unsigned long min_cost = ULONG_MAX;
+    unsigned int best_depot = INT_MAX;
+    vector<Edge> best_branching;
+
+    for (int r = 0; r < cities_cnt; r++) {
+        branching.clear();
+
+        edmonds_optimum_branching<false, true, true>
             (g, identity_property_map(), weights.origin(),
-             roots, roots, back_inserter(branching));
+             roots + r, roots + r + 1, back_inserter(branching));
 
-#ifdef DEBUG
-    BOOST_FOREACH (Edge e, branching)
-        std::cout << source(e, g) << " -> " << target(e, g) << " : " << weights[source(e, g)][target(e, g)] << std::endl;
-#endif
+        unsigned long total_cost = 0;
+        for (auto& e : branching)
+             total_cost += weights[source(e, g)][target(e, g)];
 
-    res.feasibility = branching.empty() ? false : true;
-    for (auto& e : branching)
-        res.total_cost += weights[source(e, g)][target(e, g)];
-    res.depot_id = INT_MAX;
+        #ifdef DEBUG
+            std::cout << "root: " << r << std::endl;
+            BOOST_FOREACH (Edge e, branching)
+                 std::cout << source(e, g) << " -> " << target(e, g) << " : " << weights[source(e, g)][target(e, g)] << std::endl;
+            std::cout << total_cost << std::endl;
+        #endif
 
-    BOOST_FOREACH (Edge e, branching)
+        if (total_cost < min_cost) {
+            min_cost = total_cost;
+            best_depot = r;
+            best_branching = branching;
+        }
+    }
+
+    res.feasibility = best_branching.empty() ? false : true;
+    res.total_cost = min_cost;
+    res.depot_id = best_depot;
+
+    BOOST_FOREACH (Edge e, best_branching)
         res.rec_offers.push_back(Line(source(e, g), target(e, g), weights[source(e, g)][target(e, g)]));
 
     last_res = res;

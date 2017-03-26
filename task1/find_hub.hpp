@@ -28,7 +28,7 @@ struct Line {
 
 struct Result {
     bool feasibility;
-    unsigned int total_cost;
+    unsigned long total_cost;
     unsigned int depot_id;
     std::vector<Line> rec_offers;
 };
