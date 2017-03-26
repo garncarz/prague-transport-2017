@@ -1,6 +1,7 @@
 celery[redis]
 deepdiff
 flask
+httpie
 ipython
 pytest
 scikit-learn

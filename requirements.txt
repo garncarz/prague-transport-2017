@@ -14,6 +14,7 @@ contextlib2==0.5.4        # via raven
 decorator==4.0.11         # via ipython, traitlets
 deepdiff==3.1.2
 flask==0.12
+httpie==0.9.9
 ipython-genutils==0.2.0   # via traitlets
 ipython==5.3.0
 itsdangerous==0.24        # via flask
@@ -28,12 +29,13 @@ pickleshare==0.7.4        # via ipython
 prompt-toolkit==1.0.13    # via ipython
 ptyprocess==0.5.1         # via pexpect
 py==1.4.33                # via pytest
-pygments==2.2.0           # via ipython
+pygments==2.2.0           # via httpie, ipython
 pyparsing==2.2.0          # via packaging
 pytest==3.0.7
 pytz==2016.10             # via celery
 raven[flask]==6.0.0
 redis==2.10.5             # via celery
+requests==2.13.0          # via httpie
 scikit-learn==0.18.1
 scipy==0.19.0
 simplegeneric==0.8.1      # via ipython
