@@ -5,16 +5,16 @@ void GraphProcessor::find_hub()
     struct Result res = {};
 
     complete_graph      g(cities_cnt);
-    multi_array<int, 2> weights(extents[cities_cnt][cities_cnt]);
+    multi_array<unsigned long, 2> weights(extents[cities_cnt][cities_cnt]);
     Vertex              roots[cities_cnt];
     vector<Edge>        branching;
 
     int n = {0};
     std::generate(roots, roots + cities_cnt, [&n] { return n++; } );
 
-    int *end = weights.origin() + cities_cnt * cities_cnt;
-    for (int *it = weights.origin(); it != end; ++it)
-        *it = INT_MAX;
+    unsigned long *end = weights.origin() + cities_cnt * cities_cnt;
+    for (unsigned long *it = weights.origin(); it != end; ++it)
+        *it = ULONG_MAX;
 
     for (auto it = lines.begin(); it != lines.end(); ++it) {
         weights[it->from][it->to] = it->price;
