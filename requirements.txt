@@ -25,9 +25,9 @@ py==1.4.33                # via pytest
 pygments==2.2.0           # via ipython
 pyparsing==2.2.0          # via packaging
 pytest==3.0.7
+raven[flask]==6.0.0
 scikit-learn==0.18.1
 scipy==0.19.0
-raven[flask]==6.0.0
 simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via packaging, prompt-toolkit, setuptools, traitlets
 traitlets==4.3.2          # via ipython
