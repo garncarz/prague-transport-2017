@@ -48,9 +48,10 @@ def test_task2():
     }
 
     response = app.test_client().post('/task2/input', data=json.dumps(_input))
-    data = json.loads(response.data.decode())
-
     assert response.status_code == 200
+
+    data = json.loads(response.data.decode())
     assert 'result' in data
-    assert len(data['result']) == 2
-    # TODO more asserts
+    assert len(data['result']) == len(_input['samples'])
+    for s in _input['samples']:
+        assert any(d['id'] == s['id'] for d in data['result'])
