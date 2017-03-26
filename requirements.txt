@@ -12,11 +12,13 @@ celery[redis]==4.0.2
 click==6.7                # via flask
 contextlib2==0.5.4        # via raven
 decorator==4.0.11         # via ipython, traitlets
+deepdiff==3.1.2
 flask==0.12
 ipython-genutils==0.2.0   # via traitlets
 ipython==5.3.0
 itsdangerous==0.24        # via flask
 jinja2==2.9.5             # via flask
+jsonpickle==0.9.4         # via deepdiff
 kombu==4.0.2              # via celery
 markupsafe==1.0           # via jinja2
 numpy==1.12.1             # via scipy
