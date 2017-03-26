@@ -5,7 +5,10 @@
 
 ## Installation
 
-Needed: Python 3
+Needed:
+- Python 3
+- Redis
+- Supervisord
 
 Preferably under `virtualenv` (`virtualenv venv; source venv/bin/activate`):
 
