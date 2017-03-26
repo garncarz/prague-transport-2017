@@ -6,3 +6,9 @@ install:
     - pip install -r requirements.txt
 script:
     ./test.sh
+env:
+	  - CXX=g++-4.8
+addons:
+    apt:
+    packages:
+    - g++-4.8
