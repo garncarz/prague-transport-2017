@@ -20,6 +20,12 @@ CELERY_RESULT_BACKEND = BROKER_URL
 CELERY_IGNORE_RESULT = False
 
 
+# Caching
+
+REDIS_URL = 'unix://%s/redis.sock' % BASE_DIR
+REDIS_EXPIRE_SECONDS = 60 * 60
+
+
 try:
     from .settings_local import *
 except ImportError:
