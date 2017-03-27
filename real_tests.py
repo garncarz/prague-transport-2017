@@ -23,13 +23,21 @@ def main():
             with open('%s/output.json' % test_dir) as f:
                 expected = json.loads(f.read())
 
+            print('Testing %s...' % task_url)
             resp = requests.post(task_url, data=_input)
-            data = json.loads(resp.text)
+
+            try:
+                data = json.loads(resp.text)
+            except Exception:
+                print(resp.text)
+                raise
 
             diff = DeepDiff(data, expected, ignore_order=True)
             if diff:
                 print('ERROR %s/%s' % (task, test))
                 print(diff)
+            else:
+                print('OK %s/%s' % (task, test))
 
 
 if __name__ == '__main__':
