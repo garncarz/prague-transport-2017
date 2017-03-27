@@ -8,7 +8,8 @@ _redis = StrictRedis.from_url(settings.REDIS_URL)
 
 
 def get(key):
-    return json.loads(_redis.get(json.dumps(key)))
+    value = _redis.get(json.dumps(key))
+    return json.loads(value) if value else None
 
 
 def set(key, value):
