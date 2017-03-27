@@ -38,6 +38,6 @@ def solve(_input):
     key = {'task': 2, 'input': _input}
     result = cache.get(key)
     if not result:
-        result = _solve(key)
+        result = _solve(_input)
         cache.set(key, result)
     return result
