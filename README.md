@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/mgp4/prague-transport-2017.svg?branch=master)](https://travis-ci.org/mgp4/prague-transport-2017)
 
+This is our solution for [Prague Hackathon 2017](https://praguehackathon.com).
+See the attached [task assignment](task_assignment.md).
+
 
 ## Installation
 
